@@ -4,34 +4,34 @@
 #include "command.hpp"
 
 class Menu {
-	private:
+    private:
         int history_index;
-		std::vector<Command*> history;
+        std::vector<Command*> history;
 
     public:
-		Menu() { 
+        Menu() { 
         }
 
-		std::string execute() {
-		}
+        std::string execute() {
+        }
 
         std::string stringify() {
         }
 
-		bool initialized() {
-		}
+        bool initialized() {
+        }
 
-		void add_command(Command* cmd) {
-		}
+        void add_command(Command* cmd) {
+        }
 
-		Command* get_command() {
-		}
+        Command* get_command() {
+        }
 
-		void undo() {
-		}
+        void undo() {
+        }
 
-		void redo() {
-		}
+        void redo() {
+        }
 };
 
 #endif
