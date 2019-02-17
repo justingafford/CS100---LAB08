@@ -2,7 +2,6 @@
 #include <vector>
 #include <stdlib.h>
 
-#include "menu.hpp"
 #include "command.hpp"
 
 using std::string;
