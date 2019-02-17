@@ -16,8 +16,8 @@ For this lab you have been provided with a main function as well as some helper 
   * Typing "undo" will go back to the last command, and can be called until there are no more commands to undo
 * Redo a command
   * Typing "redo" will go forward to the next command, and can be called until there are no more commands to redo
-* Do a Calculation
-  * Do a running calculation. This first calculation must start with a single number (ex: 3) or a random value represented with a question mark (ex: ?), and after a single number has been input should take an operator followed by a number (ex: + 10) or followed by a question mark (ex: / ?). Note that a space is required between the operator and the operand.
+* Perform a Calculation
+  * Perform a running calculation. This first calculation must start with a single number (ex: `3`) or a random value represented with a question mark (ex: `?`), and after a single number has been input should take an operator followed by a number (ex: `+ 10`) or followed by a question mark (ex: `^ ?`). Note that a space is required between the operator and the operand.
 
 Additionally, it has an initial function which requests that the user specifies what category of operators the user wants to work in and creates the matching factory for use in the rest of the program.
 
@@ -27,42 +27,42 @@ The menu class is used as an interface between user input and the commands that 
 
 ```c++
 class Menu {
-	private:
+    private:
         int history_index; // Indexes which command was last executed, accounting for undo and redo functions
-		std::vector<Command*> history; // Holds all the commands that have been executed until now
+        std::vector<Command*> history; // Holds all the commands that have been executed until now
 
     public:
-		Menu() {
+        Menu() {
             // Constructor which initializes the internal members
         }
 
-		std::string execute() {
+        std::string execute() {
             // Returns the string converted evaluation of the current command
-		}
+        }
 
         std::string stringify() {
             // Returns the stringified version of the current command
         }
 
-		bool initialized() {
+        bool initialized() {
             // Returns if the history has an InitialCommand, which is necessary to start the calculation
-		}
+        }
 
-		void add_command(Command* cmd) {
+        void add_command(Command* cmd) {
             // Adds a command to the history (does not execute it), this may require removal of some other commands depending on where history_index is
-		}
+        }
 
-		Command* get_command() {
+        Command* get_command() {
             // Returns the command that the history_index is currently referring to
-		}
+        }
 
-		void undo() {
+        void undo() {
             // Move back one command (does not execute it) if there is a command to undo
-		}
+        }
 
-		void redo() {
+        void redo() {
             // Moves forward one command (does not execute it) if there is a command to redo
-		}
+        }
 };
 ```
 
