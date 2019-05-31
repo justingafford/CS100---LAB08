@@ -58,9 +58,9 @@ class Menu {
        void Menu::undo() {
 	         if (history_index == 0) {
 		           return;
-	         }
+		 }
 	         --history_index;
-	      }
+	}
 
       void Menu::redo() {
 	        if (history_index == history.size() - 1) {
