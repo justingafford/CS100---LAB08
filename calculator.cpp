@@ -149,6 +149,8 @@ int main() {
         // After every command is entered we want to print what the most recent good command contains, or
         // print a special "Empty" message when the user call undo enough times to go back to the beginning
         // of the program or when invalid initial commands are entered
+        cout << "Checking if not initialized...." << menu->initialized() <<endl;
+        
         if(!menu->initialized()) {
             cout << "Empty" << endl;
         } else {
