@@ -99,7 +99,7 @@ TEST(MenuTests, UndoRedoTest)  {
     Op* op1 = new Op(4);
     Op* op2 = new Op(6);
     Add* add1 = new Add(op1,op2);
-    InitialCommand* cmd = new InitialCommand(op);
+    InitialCommand* cmd = new InitialCommand(op1);
     AddCommand* cmd2 = new AddCommand(cmd,add1);
     menu->add_command(cmd);
     menu->add_command(cmd2);
