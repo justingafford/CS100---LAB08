@@ -2,7 +2,7 @@
 #define MENU_H
 
 #include <iostream>
-#include "command.h"
+#include "command.hpp"
 using namespace std;
 
 class Menu {
