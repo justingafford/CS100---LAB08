@@ -9,8 +9,13 @@ class BaseFactory {
         BaseFactory() {}
 
         /* Pure Virtual Production Function */
-        virtual Op* createOp(double value) = 0;
-        virtual Rand* createRand() = 0;
+        Op* createOp(double value)  { 
+            DoubleOp* temp = new DoubleOp(value); 
+            return temp;
+        }
+        Rand* createRand() {
+            return new DoubleRand();
+        }
 };
 
 #endif //__BASE_FACTORY_HPP__
