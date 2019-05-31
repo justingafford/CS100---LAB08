@@ -125,8 +125,8 @@ int main() {
             // Calculations must start with a single number, so the first entry is a special case which
             // creates an initial command which is essentially a composite tree with a single node
             if(!menu->initialized()) {
-                if(is_integer(input)) {
-                    menu->add_command(new InitialCommand(factory->createOp(atoi(input.c_str()))));
+	        if(is_integer(input)) {
+		    menu->add_command(new InitialCommand(factory->createOp(atoi(input.c_str()))));
                 }
                 else if(input.substr(0,1) == "?") {
                     menu->add_command(new InitialCommand(factory->createRand()));
@@ -149,14 +149,13 @@ int main() {
         // After every command is entered we want to print what the most recent good command contains, or
         // print a special "Empty" message when the user call undo enough times to go back to the beginning
         // of the program or when invalid initial commands are entered
-        cout << "Checking if not initialized...." << menu->initialized() <<endl;
         
         if(!menu->initialized()) {
             cout << "Empty" << endl;
         } else {
-            menu->stringify();
+            cout << menu->stringify();
             cout << " = ";
-            menu->execute();
+            cout << menu->execute();
             cout << endl;
         }
     }
