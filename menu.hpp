@@ -19,7 +19,7 @@ class Menu {
         string execute() {
 	          if (history.at(history_index) == NULL) {
 		            cout << 0 << endl;;
-		            return;
+		            return "";
 	          }
 	          return to_string(history.at(history_index)->execute());
         };
