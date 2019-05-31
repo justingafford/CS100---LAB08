@@ -6,6 +6,6 @@ using namespace std;
 		return L1 ->evaluate() * L2 ->evaluate();
 	}
 	string Mult::stringify() {
-		string temp = L1 ->stringify() + "*" + L2 ->stringify();
+		string temp = L1 ->stringify() + " * " + L2 ->stringify();
 		return temp;
 	}
