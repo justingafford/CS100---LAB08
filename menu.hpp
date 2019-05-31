@@ -15,12 +15,12 @@ class Menu {
 			
         };
         
-        void execute() {
+        string execute() {
 	          if (history.at(history_index) == NULL) {
 		            cout << 0 << endl;;
 		            return;
 	          }
-	          cout << history.at(history_index)->execute() << endl;
+	          return to_string(history.at(history_index)->execute());
         };
 	
         std::string stringify() {
