@@ -4,24 +4,6 @@
 
 #include "command.hpp"
 #include "menu.hpp"
-#include "base.hpp"
-#include "base_factory.hpp"
-#include "scifactory.hpp"
-#include "doublefactory.hpp"
-#include "precisionfactory.hpp"
-#include "scirand.hpp"
-#include "precisionrand.hpp"
-#include "doublerand.hpp"
-#include "sciop.hpp"
-#include "precisionop.hpp"
-#include "doubleop.hpp"
-#include "Op.hpp"
-#include "Rand.hpp"
-#include "Add.hpp"
-#include "Sub.hpp"
-#include "Mult.hpp"
-#include "Div.hpp"
-#include "Pow.hpp"
 using std::string;
 using std::cout;
 using std::cin;
