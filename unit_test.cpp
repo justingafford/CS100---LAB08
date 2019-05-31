@@ -16,6 +16,8 @@
 #include "Add.hpp"
 #include "Sub.hpp"
 #include "Pow.hpp"
+#include "menu.hpp"
+#include "command.hpp"
 #include <iostream>
 #include "gtest/gtest.h"
 
