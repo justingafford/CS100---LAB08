@@ -25,8 +25,8 @@ TEST(CommandsTests, InitialTest)  {
     Op* op = new Op(69);
     InitialCommand* cmd = new InitialCommand(op);
     EXPECT_EQ(cmd->stringify(),"69.000000");
-    EXPECT_EQ(cmd->get_root()->evaluate(),"69.000000");
-    EXPECT_EQ(cmd->evaluate(),"69.000000");
+    EXPECT_EQ(cmd->get_root()->evaluate(), 69.000000);
+    EXPECT_EQ(cmd->execute(), 69.000000);
 }
 
 TEST(CommandsTests, AddTest)  {
@@ -36,8 +36,8 @@ TEST(CommandsTests, AddTest)  {
     InitialCommand* cmd = new InitialCommand(op1);
     AddCommand* cmd2 = new AddCommand(cmd,add1);
     EXPECT_EQ(cmd2->stringify(),"4.000000 + 4.000000 + 6.000000");
-    EXPECT_EQ(cmd2->get_root()->evaluate(),"14.000000");
-    EXPECT_EQ(cmd2->evaluate(),"14.000000");
+    EXPECT_EQ(cmd2->get_root()->evaluate(), 14.000000);
+    EXPECT_EQ(cmd2->execute(), 14.000000);
     
 }
 
@@ -48,8 +48,8 @@ TEST(CommandsTests, SubTests)  {
     InitialCommand* cmd = new InitialCommand(op1);
     SubCommand* cmd2 = new SubCommand(cmd,sub1);
     EXPECT_EQ(cmd2->stringify(),"9.000000 - 9.000000 - 6.000000");
-    EXPECT_EQ(cmd2->get_root()->evaluate(),"-6.000000");
-    EXPECT_EQ(cmd2->evaluate(),"-6.000000");
+    EXPECT_EQ(cmd2->get_root()->evaluate(), -6.000000);
+    EXPECT_EQ(cmd2->execute(), -6.000000);
 }
 
 TEST(CommandsTests, MultTest)  {
@@ -59,8 +59,8 @@ TEST(CommandsTests, MultTest)  {
     InitialCommand* cmd = new InitialCommand(op1);
     MultCommand* cmd2 = new MultCommand(cmd,mult1);
     EXPECT_EQ(cmd2->stringify(),"4.000000 * 4.000000 * 2.000000");
-    EXPECT_EQ(cmd2->get_root()->evaluate(),"32.000000");
-    EXPECT_EQ(cmd2->evaluate(),"32.000000");
+    EXPECT_EQ(cmd2->get_root()->evaluate(), 32.000000);
+    EXPECT_EQ(cmd2->execute(), 32.000000);
 }
 
 TEST(CommandsTests, DivTest)  {
@@ -70,8 +70,8 @@ TEST(CommandsTests, DivTest)  {
     InitialCommand* cmd = new InitialCommand(op1);
     DivCommand* cmd2 = new DivCommand(cmd,div1);
     EXPECT_EQ(cmd2->stringify(),"6.000000 / 6.000000 / 2.000000");
-    EXPECT_EQ(cmd2->get_root()->evaluate(),"0.500000");
-    EXPECT_EQ(cmd2->evaluate(),"0.500000");
+    EXPECT_EQ(cmd2->get_root()->evaluate(), 0.500000);
+    EXPECT_EQ(cmd2->execute(), 0.500000);
 }
 
 TEST(CommandsTests, PowTest)  {
@@ -81,8 +81,8 @@ TEST(CommandsTests, PowTest)  {
     InitialCommand* cmd = new InitialCommand(op1);
     PowCommand* cmd2 = new PowCommand(cmd,pow1);
     EXPECT_EQ(cmd2->stringify(),"2.000000 ** 2.000000 ** 2.000000");
-    EXPECT_EQ(cmd2->get_root()->evaluate(),"16.000000");
-    EXPECT_EQ(cmd2->evaluate(),"16.000000");
+    EXPECT_EQ(cmd2->get_root()->evaluate(), 16.000000);
+    EXPECT_EQ(cmd2->execute(), 16.000000);
 }
 
 TEST(MenuTests, AddGetCommandTest)  {
@@ -91,7 +91,7 @@ TEST(MenuTests, AddGetCommandTest)  {
     InitialCommand* cmd = new InitialCommand(op);
     menu->add_command(cmd);
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000");
-    EXPECT_EQ(menu->get_command()->evaluate(),"4.000000");
+    EXPECT_EQ(menu->get_command()->execute(), 4.000000);
 }
 
 TEST(MenuTests, UndoRedoTest)  {
@@ -103,15 +103,15 @@ TEST(MenuTests, UndoRedoTest)  {
     AddCommand* cmd2 = new AddCommand(cmd,add1);
     menu->add_command(cmd);
     menu->add_command(cmd2);
-    EXPECT_EQ(menu->get_command()->evaluate(),"14.000000");
+    EXPECT_EQ(menu->get_command()->execute(),14.000000);
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000 + 4.000000 + 6.000000");
     
     menu->undo();
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000");
-    EXPECT_EQ(menu->get_command()->evaluate(),"4.000000");
+    EXPECT_EQ(menu->get_command()->execute(),4.000000);
     
     menu->redo();
-    EXPECT_EQ(menu->get_command()->evaluate(),"14.000000");
+    EXPECT_EQ(menu->get_command()->execute(),14.000000);
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000 + 4.000000 + 6.000000");
 }
 
