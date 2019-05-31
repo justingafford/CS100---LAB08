@@ -1,6 +1,7 @@
 #ifndef __COMMAND_HPP__
 #define __COMMAND_HPP__
 #include "base.hpp"
+#include "menu.hpp"
 #include "base_factory.hpp"
 #include "scifactory.hpp"
 #include "doublefactory.hpp"
