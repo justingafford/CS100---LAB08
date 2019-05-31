@@ -28,15 +28,15 @@ TEST(OpTests, DoubleTest)  {
 }
 
 TEST(OpTests, SciTest)  {
-    BaseFactory* factory = new SciFactory;
+    SciFactory* factory = new SciFactory;
     Op* sci = factory->createOp(420.6969696969);
     ASSERT_EQ(sci->stringify(),"4.206970e+02");
 }
 
 TEST(OpTests, PrecisionTest)  {
-    BaseFactory* factory = new PrecisionFactory;
+    PrecisionFactory* factory = new PrecisionFactory;
     Op* precis = factory->createOp(420.6969696969);
-    ASSERT_EQ(precis->stringify(),"420.696969697");
+    ASSERT_EQ(precis->stringify(),"420.696970");
 }
 //create randmock for testing, because we cannot know what numbers are, because they are random.
 class RandMock: public Rand {
@@ -54,13 +54,13 @@ TEST(RandTests, DoubleTest)  {
 }
 
 TEST(RandTests, SciTest)  {
-    BaseFactory* factory = new SciFactory;
+    SciFactory* factory = new SciFactory;
     Rand* randSci = factory->createRand();
     cout << "Random Scientific-notation number(whole number from 1-100): " << randSci->stringify() << endl;
 }
 
 TEST(RandTests, PrecisionTest)  {
-    BaseFactory* factory = new PrecisionFactory;
+    PrecisionFactory* factory = new PrecisionFactory;
     Rand* randPrecision = factory->createRand();
     cout << "Random precision number(whole number from 1-100): " << randPrecision->stringify() << endl;
 }
