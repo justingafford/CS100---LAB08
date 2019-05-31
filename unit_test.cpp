@@ -89,9 +89,9 @@ TEST(MenuTests, AddGetCommandTest)  {
     Menu* menu = new Menu;
     Op* op = new Op(4);
     InitialCommand* cmd = new InitialCommand(op);
-    EXPECT_EQ(menu->initialized(),0);
+    EXPECT_EQ(menu->initialized(),False);
     menu->add_command(cmd);
-    EXPECT_EQ(menu->initialized(),1);
+    EXPECT_EQ(menu->initialized(),True;
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000");
     EXPECT_EQ(menu->get_command()->execute(), 4.000000);
     EXPECT_EQ(menu->execute(),"4.000000");
@@ -105,27 +105,28 @@ TEST(MenuTests, UndoRedoTest)  {
     Add* add1 = new Add(op1,op2);
     InitialCommand* cmd = new InitialCommand(op1);
     AddCommand* cmd2 = new AddCommand(cmd,add1);
-    EXPECT_EQ(menu->initialized(),0);
+    EXPECT_EQ(menu->initialized(),False);
     menu->add_command(cmd);
-    EXPECT_EQ(menu->initialized(),1);
+    EXPECT_EQ(menu->initialized(),True);
     menu->add_command(cmd2);
-    EXPECT_EQ(menu->initialized(),1);
+    EXPECT_EQ(menu->initialized(),True);
     EXPECT_EQ(menu->get_command()->execute(),14.000000);
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000 + 4.000000 + 6.000000");
     EXPECT_EQ(menu->execute(),"14.000000");
     EXPECT_EQ(menu->stringify(),"4.000000 + 4.000000 + 6.000000");
     
     menu->undo();
-    EXPECT_EQ(menu->initialized(),1);
+    EXPECT_EQ(menu->initialized(),True);
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000");
     EXPECT_EQ(menu->get_command()->execute(),4.000000);
     EXPECT_EQ(menu->execute(),"4.000000");
     EXPECT_EQ(menu->stringify(),"4.000000");
     menu->redo();
-    EXPECT_EQ(menu->initialized(),1);
+    EXPECT_EQ(menu->initialized(),True);
     EXPECT_EQ(menu->get_command()->execute(),14.000000);
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000 + 4.000000 + 6.000000");
     EXPECT_EQ(menu->execute(),"14.000000");
+    cout << "Outputting execute: " << menu -> execute() << endl;
     EXPECT_EQ(menu->stringify(),"4.000000 + 4.000000 + 6.000000");
 }
 
