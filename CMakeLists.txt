@@ -6,7 +6,6 @@ SET(CMAKE_CXX_STANDARD 11)
  
 ADD_EXECUTABLE(test
    unit_test.cpp
-   menu.cpp
    calculator.cpp
    Add.cpp
    Div.cpp
