@@ -1,3 +1,6 @@
+#ifndef MENU_H
+#define MENU_H
+
 #include <iostream>
 #include "command.h"
 using namespace std;
@@ -74,3 +77,5 @@ class Menu {
 	        }
 	        history_index++;
       }
+};
+#endif
