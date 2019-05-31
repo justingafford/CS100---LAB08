@@ -13,10 +13,10 @@
 #include "doubleop.hpp"
 #include "Op.hpp"
 #include "Rand.hpp"
-#include "Add.hpp"
-#include "Sub.hpp"
 #include "Mult.hpp"
 #include "Div.hpp"
+#include "Add.hpp"
+#include "Sub.hpp"
 #include "Pow.hpp"
 
 class Command {
