@@ -1,7 +1,24 @@
 #include <iostream>
 #include <vector>
 #include <stdlib.h>
-
+#include "base.hpp"
+#include "base_factory.hpp"
+#include "scifactory.hpp"
+#include "doublefactory.hpp"
+#include "precisionfactory.hpp"
+#include "scirand.hpp"
+#include "precisionrand.hpp"
+#include "doublerand.hpp"
+#include "sciop.hpp"
+#include "precisionop.hpp"
+#include "doubleop.hpp"
+#include "Op.hpp"
+#include "Rand.hpp"
+#include "Mult.hpp"
+#include "Div.hpp"
+#include "Add.hpp"
+#include "Sub.hpp"
+#include "Pow.hpp"
 #include "command.hpp"
 #include "menu.hpp"
 using std::string;
