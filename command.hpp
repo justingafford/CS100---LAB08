@@ -24,57 +24,57 @@ class Command {
         Base* root;
     
     public:
-        Command() { this->root = nullptr; }
-        double execute() { return root->evaluate(); }
-        std::string stringify() { return root->stringify(); }
-        Base* get_root() { return root; }
+        Command() { this->root = nullptr; };
+        double execute() { return root->evaluate(); };
+        std::string stringify() { return root->stringify(); };
+        Base* get_root() { return root; };
 };
 
 class InitialCommand : public Command {
 	public:
 		InitialCommand(Base* bass){ root = bass; };
-		double execute() {  return root->evaluate(); }
-        	std::string stringify() { return root->stringify(); }
-		Base* get_root() { return root; }
+		double execute() {  return root->evaluate(); };
+        	std::string stringify() { return root->stringify(); };
+		Base* get_root() { return root; };
 };
 
 class AddCommand : public Command {
 	public:
 		AddCommand(Command* c, Base* bass){ root = new Add(c->get_root(), bass);};
-		double execute() {  return root->evaluate(); }
-        	std::string stringify() { return root->stringify(); }
-		Base* get_root() { return root; }
+		double execute() {  return root->evaluate(); };
+        	std::string stringify() { return root->stringify(); };
+		Base* get_root() { return root; };
 };
 
 class SubCommand : public Command {
 	public:
 		SubCommand(Command* c, Base* bass){root = new Sub(c->get_root(), bass);};
-		double execute() {  return root->evaluate(); }
-      	  	std::string stringify() { return root->stringify(); }
-		Base* get_root() { return root; }
+		double execute() {  return root->evaluate(); };
+      	  	std::string stringify() { return root->stringify(); };
+		Base* get_root() { return root; };
 };
 
 class MultCommand : public Command {
 	public:
 		MultCommand(Command* c, Base* bass){root = new Mult(c->get_root(), bass);};
-		double execute() {  return root->evaluate(); }
-        	std::string stringify() { return root->stringify(); }
-		Base* get_root() { return root; }
+		double execute() {  return root->evaluate(); };
+        	std::string stringify() { return root->stringify(); };
+		Base* get_root() { return root; };
 };
 
 class DivCommand : public Command {
 	public:
 		DivCommand(Command* c, Base* bass){root = new Div(c->get_root(), bass);};
-		double execute() {  return root->evaluate(); }
-        	std::string stringify() { return root->stringify(); }
-		Base* get_root() { return root; }
+		double execute() {  return root->evaluate(); };
+        	std::string stringify() { return root->stringify(); };
+		Base* get_root() { return root; };
 };
 
 class PowCommand : public Command {
 	public:
 		PowCommand(Command* c, Base* bass){root = new Pow(c->get_root(), bass);};
-		double execute() {  return root->evaluate(); }
-        	std::string stringify() { return root->stringify(); }
-		Base* get_root() { return root; }
+		double execute() {  return root->evaluate(); };
+        	std::string stringify() { return root->stringify(); };
+		Base* get_root() { return root; };
 };
 #endif
