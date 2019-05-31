@@ -152,7 +152,10 @@ int main() {
         if(!menu->initialized()) {
             cout << "Empty" << endl;
         } else {
-            cout << menu->stringify() << " = " << menu->execute() << endl;
+            menu->stringify();
+            cout << " = ";
+            menu->execute();
+            cout << endl;
         }
     }
     delete menu;
