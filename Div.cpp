@@ -9,6 +9,6 @@ double Div::evaluate() {
 }
 
 string Div::stringify() {
-	string temp = L1 ->stringify() + "/" + L2 ->stringify();
+	string temp = L1 ->stringify() + " / " + L2 ->stringify();
 	return temp;
 }
