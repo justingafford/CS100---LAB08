@@ -92,6 +92,8 @@ TEST(MenuTests, AddGetCommandTest)  {
     menu->add_command(cmd);
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000");
     EXPECT_EQ(menu->get_command()->execute(), 4.000000);
+    EXPECT_EQ(menu->execute(),"4.000000");
+    EXPECT_EQ(menu->stringify(),"4.000000");
 }
 
 TEST(MenuTests, UndoRedoTest)  {
@@ -105,14 +107,19 @@ TEST(MenuTests, UndoRedoTest)  {
     menu->add_command(cmd2);
     EXPECT_EQ(menu->get_command()->execute(),14.000000);
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000 + 4.000000 + 6.000000");
+    EXPECT_EQ(menu->execute(),"14.000000");
+    EXPECT_EQ(menu->stringify(),"4.000000 + 4.000000 + 6.000000");
     
     menu->undo();
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000");
     EXPECT_EQ(menu->get_command()->execute(),4.000000);
-    
+    EXPECT_EQ(menu->execute(),"4.000000");
+    EXPECT_EQ(menu->stringify(),"4.000000");
     menu->redo();
     EXPECT_EQ(menu->get_command()->execute(),14.000000);
     EXPECT_EQ(menu->get_command()->stringify(),"4.000000 + 4.000000 + 6.000000");
+    EXPECT_EQ(menu->execute(),"14.000000");
+    EXPECT_EQ(menu->stringify(),"4.000000 + 4.000000 + 6.000000");
 }
 
 int main(int argc, char **argv) {
