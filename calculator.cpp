@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #include "command.hpp"
-
+#include "menu.hpp"
 using std::string;
 using std::cout;
 using std::cin;
