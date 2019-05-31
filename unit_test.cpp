@@ -21,51 +21,99 @@
 #include <iostream>
 #include "gtest/gtest.h"
 
-TEST(OpTests, DoubleTest)  {
-    BaseFactory* factory = new DoubleFactory;
-    Op* doub = factory->createOp(420.6969696969);
-    ASSERT_EQ(doub->stringify(),"420.696970");
+TEST(CommandsTests, InitialTest)  {
+    Op* op = new Op(69);
+    InitialCommand* cmd = new InitialCommand(op);
+    EXPECT_EQ(cmd->stringify(),"69.000000");
+    EXPECT_EQ(cmd->get_root()->evaluate(),"69.000000");
+    EXPECT_EQ(cmd->evaluate(),"69.000000");
 }
 
-TEST(OpTests, SciTest)  {
-    SciFactory* factory = new SciFactory;
-    Op* sci = factory->createOp(420.6969696969);
-    ASSERT_EQ(sci->stringify(),"4.206970e+02");
+TEST(CommandsTests, AddTest)  {
+    Op* op1 = new Op(4);
+    Op* op2 = new Op(6);
+    Add* add1 = new Add(op1,op2);
+    InitialCommand* cmd = new InitialCommand(op1);
+    AddCommand* cmd2 = new AddCommand(cmd,add1);
+    EXPECT_EQ(cmd2->stringify(),"4.000000 + 4.000000 + 6.000000");
+    EXPECT_EQ(cmd2->get_root()->evaluate(),"14.000000");
+    EXPECT_EQ(cmd2->evaluate(),"14.000000");
+    
 }
 
-TEST(OpTests, PrecisionTest)  {
-    PrecisionFactory* factory = new PrecisionFactory;
-    Op* precis = factory->createOp(420.6969696969);
-    ASSERT_EQ(precis->stringify(),"420.696969697");
-}
-//create randmock for testing, because we cannot know what numbers are, because they are random.
-class RandMock: public Rand {
-    public:
-        RandMock() {};
-
-        virtual double evaluate() { return 314.159265359; }
-        virtual string stringify() { return "314.159265359"; }
-};
-
-TEST(RandTests, DoubleTest)  {
-    BaseFactory* factory = new DoubleFactory;
-    Rand* randDouble = factory->createRand();
-    cout << "Random Double number(whole number from 1-100): " << randDouble->stringify() << endl;
+TEST(CommandsTests, SubTests)  {
+    Op* op1 = new Op(9);
+    Op* op2 = new Op(6);
+    Sub* sub1 = new Sub(op1,op2);
+    InitialCommand* cmd = new InitialCommand(op1);
+    SubCommand* cmd2 = new SubCommand(cmd,sub1);
+    EXPECT_EQ(cmd2->stringify(),"9.000000 - 9.000000 - 6.000000");
+    EXPECT_EQ(cmd2->get_root()->evaluate(),"-6.000000");
+    EXPECT_EQ(cmd2->evaluate(),"-6.000000");
 }
 
-TEST(RandTests, SciTest)  {
-    SciFactory* factory = new SciFactory;
-    Rand* randSci = factory->createRand();
-    cout << "Random Scientific-notation number(whole number from 1-100): " << randSci->stringify() << endl;
+TEST(CommandsTests, MultTest)  {
+    Op* op1 = new Op(4);
+    Op* op2 = new Op(2);
+    Mult* mult1 = new Mult(op1,op2);
+    InitialCommand* cmd = new InitialCommand(op1);
+    MultCommand* cmd2 = new MultCommand(cmd,mult1);
+    EXPECT_EQ(cmd2->stringify(),"4.000000 * 4.000000 * 2.000000");
+    EXPECT_EQ(cmd2->get_root()->evaluate(),"32.000000");
+    EXPECT_EQ(cmd2->evaluate(),"32.000000");
 }
 
-TEST(RandTests, PrecisionTest)  {
-    PrecisionFactory* factory = new PrecisionFactory;
-    Rand* randPrecision = factory->createRand();
-    cout << "Random precision number(whole number from 1-100): " << randPrecision->stringify() << endl;
+TEST(CommandsTests, DivTest)  {
+    Op* op1 = new Op(6);
+    Op* op2 = new Op(2);
+    Div* div1 = new Div(op1,op2);
+    InitialCommand* cmd = new InitialCommand(op1);
+    DivCommand* cmd2 = new DivCommand(cmd,div1);
+    EXPECT_EQ(cmd2->stringify(),"6.000000 / 6.000000 / 2.000000");
+    EXPECT_EQ(cmd2->get_root()->evaluate(),"0.500000");
+    EXPECT_EQ(cmd2->evaluate(),"0.500000");
 }
 
+TEST(CommandsTests, PowTest)  {
+    Op* op1 = new Op(2);
+    Op* op2 = new Op(2);
+    Pow* pow1 = new Pow(op1,op2);
+    InitialCommand* cmd = new InitialCommand(op1);
+    PowCommand* cmd2 = new PowCommand(cmd,pow1);
+    EXPECT_EQ(cmd2->stringify(),"2.000000 ** 2.000000 ** 2.000000");
+    EXPECT_EQ(cmd2->get_root()->evaluate(),"16.000000");
+    EXPECT_EQ(cmd2->evaluate(),"16.000000");
+}
 
+TEST(MenuTests, AddGetCommandTest)  {
+    Menu* menu = new Menu;
+    Op* op = new Op(4);
+    InitialCommand* cmd = new InitialCommand(op);
+    menu->add_command(cmd);
+    EXPECT_EQ(menu->get_command()->stringify(),"4.000000");
+    EXPECT_EQ(menu->get_command()->evaluate(),"4.000000");
+}
+
+TEST(MenuTests, UndoRedoTest)  {
+    Menu* menu = new Menu;
+    Op* op1 = new Op(4);
+    Op* op2 = new Op(6);
+    Add* add1 = new Add(op1,op2);
+    InitialCommand* cmd = new InitialCommand(op);
+    AddCommand* cmd2 = new AddCommand(cmd,add1);
+    menu->add_command(cmd);
+    menu->add_command(cmd2);
+    EXPECT_EQ(menu->get_command()->evaluate(),"14.000000");
+    EXPECT_EQ(menu->get_command()->stringify(),"4.000000 + 4.000000 + 6.000000");
+    
+    menu->undo();
+    EXPECT_EQ(menu->get_command()->stringify(),"4.000000");
+    EXPECT_EQ(menu->get_command()->evaluate(),"4.000000");
+    
+    menu->redo();
+    EXPECT_EQ(menu->get_command()->evaluate(),"14.000000");
+    EXPECT_EQ(menu->get_command()->stringify(),"4.000000 + 4.000000 + 6.000000");
+}
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
