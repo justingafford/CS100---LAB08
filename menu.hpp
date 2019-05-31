@@ -12,73 +12,64 @@ class Menu {
         int history_index; // Indexes which command was last executed, accounting for undo and redo functions
         std::vector<Command*> history; // Holds all the commands that have been executed until now
     public:
-        Menu() : history_index(0) {
+        Menu() : history_index(-1) {
 			
         };
         
         string execute() {
-	          if (history.at(history_index) == NULL) {
-		            cout << 0 << endl;;
-		            return "";
+	          if (history_index == -1) {
+		            return "0";
 	          }
 	          return to_string(history.at(history_index)->execute());
         };
 	
         std::string stringify() {
-		  if (history.at(history_index) == NULL) {
-		            return "";
+		  if (history_index == -1) {
+		            return "0";
 	          }
-	          return history.at(history_index)->stringify();
+		  else {
+	          	return history.at(history_index)->stringify();
+		  }
 	};
 	
         bool initialized() {
-	          if (history_index == 0) {
+	          if (history_index == -1) {
 		            return false;
 	          }
 	          return true;
         };
 
         void add_command(Command* cmd) {
-	          vector<Command*>::iterator it = history.begin();
-	          int counter = history_index + 1;
-
-	          if (history.empty()) {
-		            history.push_back(NULL);
-		            history.push_back(cmd);
-		            ++history_index;
-	          }
-	          else {
-		             if (history_index == history.size() - 1) {
-			               history.push_back(cmd);
-			               ++history_index;
-		             }
-		             else {
-			               while (counter != 0) {
-				                  ++it;
-				                  --counter;
-			               }
-			               history.at(history_index + 1) = cmd;
-			               ++history_index;
-		             }
-	          }
-       };
+	    if(history_index == -1) {
+	        history.push_back(cmd);
+		history_index = 0;
+	    }
+	    else if( history_index == history.size() - 1) {
+		history.push_back(cmd);
+		++history_index;
+	    }
+	    else {
+		history.at(history_index + 1) = cmd;
+		++history_index;
+	    }
+       	};
 
        Command* get_command() {
-	         return history.at(history_index);
+	    return history.at(history_index);
        };
 
        void undo() {
-	         if (history_index == 0) {
-		           return;
+	         if (history_index > 0) {
+		     --history_index;
 		 }
-	         --history_index;
+	         
 	};
 	
       	void redo() {
-	        if (history_index == history.size() - 1) {
-		          return;
+	        if (history_index < history.size() - 1) {
+		    history_index++;
 	        }
-	        history_index++;
+	        
       	};
 };
 #endif
