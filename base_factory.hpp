@@ -2,7 +2,8 @@
 #define __BASE_FACTORY_HPP__
 #include "Rand.hpp"
 #include "Op.hpp"
-
+#include "doubleop.hpp"
+#include "doublerand.hpp"
 class BaseFactory {
     public:
         /* Constructor */
