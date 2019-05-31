@@ -48,8 +48,8 @@ TEST(CommandsTests, SubTests)  {
     InitialCommand* cmd = new InitialCommand(op1);
     SubCommand* cmd2 = new SubCommand(cmd,sub1);
     EXPECT_EQ(cmd2->stringify(),"9.000000 - 9.000000 - 6.000000");
-    EXPECT_EQ(cmd2->get_root()->evaluate(), -6.000000);
-    EXPECT_EQ(cmd2->execute(), -6.000000);
+    EXPECT_EQ(cmd2->get_root()->evaluate(), 6.000000);
+    EXPECT_EQ(cmd2->execute(), 6.000000);
 }
 
 TEST(CommandsTests, MultTest)  {
@@ -70,8 +70,8 @@ TEST(CommandsTests, DivTest)  {
     InitialCommand* cmd = new InitialCommand(op1);
     DivCommand* cmd2 = new DivCommand(cmd,div1);
     EXPECT_EQ(cmd2->stringify(),"6.000000 / 6.000000 / 2.000000");
-    EXPECT_EQ(cmd2->get_root()->evaluate(), 0.500000);
-    EXPECT_EQ(cmd2->execute(), 0.500000);
+    EXPECT_EQ(cmd2->get_root()->evaluate(), 2.000000);
+    EXPECT_EQ(cmd2->execute(), 2.000000);
 }
 
 TEST(CommandsTests, PowTest)  {
