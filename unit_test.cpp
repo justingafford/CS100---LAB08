@@ -36,7 +36,7 @@ TEST(OpTests, SciTest)  {
 TEST(OpTests, PrecisionTest)  {
     PrecisionFactory* factory = new PrecisionFactory;
     Op* precis = factory->createOp(420.6969696969);
-    ASSERT_EQ(precis->stringify(),"420.696970");
+    ASSERT_EQ(precis->stringify(),"420.696969697");
 }
 //create randmock for testing, because we cannot know what numbers are, because they are random.
 class RandMock: public Rand {
