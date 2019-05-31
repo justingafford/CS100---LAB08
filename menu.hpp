@@ -24,10 +24,9 @@ class Menu {
         }
         std::string stringify() {
 		  if (history.at(history_index) == NULL) {
-		            cout << 0 << endl;;
-		            return;
+		            return "";
 	          }
-	          cout << history.at(history_index)->stringify() << endl;
+	          return history.at(history_index)->stringify();
 	}
         bool initialized() {
 	          if (history_index == 0) {
