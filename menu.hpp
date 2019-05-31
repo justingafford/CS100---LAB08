@@ -15,7 +15,7 @@ class Menu {
 			
         };
         
-        void Menu::execute() {
+        void execute() {
 	          if (history.at(history_index) == NULL) {
 		            cout << 0 << endl;;
 		            return;
@@ -29,14 +29,14 @@ class Menu {
 	          }
 	          cout << history.at(history_index)->stringify() << endl;
 	}
-        bool Menu::initialized() {
+        bool initialized() {
 	          if (history_index == 0) {
 		            return false;
 	          }
 	          return true;
         }
 
-        void Menu::add_command(Command* cmd) {
+        void add_command(Command* cmd) {
 	          vector<Command*>::iterator it = history.begin();
 	          int counter = history_index + 1;
 
@@ -61,18 +61,18 @@ class Menu {
 	          }
        }
 
-       Command* Menu::get_command() {
+       Command* get_command() {
 	         return history.at(history_index);
        }
 
-       void Menu::undo() {
+       void undo() {
 	         if (history_index == 0) {
 		           return;
 		 }
 	         --history_index;
 	}
 
-      void Menu::redo() {
+      void redo() {
 	        if (history_index == history.size() - 1) {
 		          return;
 	        }
