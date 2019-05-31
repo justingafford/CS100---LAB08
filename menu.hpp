@@ -18,7 +18,13 @@ class Menu {
 	          }
 	          cout << history.at(history_index)->execute() << endl;
         }
-
+        std::string stringify() {
+		  if (history.at(history_index) == NULL) {
+		            cout << 0 << endl;;
+		            return;
+	          }
+	          cout << history.at(history_index)->stringify() << endl;
+	}
         bool Menu::initialized() {
 	          if (history_index == 0) {
 		            return false;
