@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include <iostream>
+#include <vector>
 #include "command.hpp"
 using namespace std;
 
