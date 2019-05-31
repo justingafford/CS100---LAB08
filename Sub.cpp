@@ -8,6 +8,6 @@ double Sub::evaluate() {
 }
 
 string Sub::stringify() {
-	string temp = L1 ->stringify() + "-" + L2 ->stringify();
+	string temp = L1 ->stringify() + " - " + L2 ->stringify();
 	return temp;
 }
