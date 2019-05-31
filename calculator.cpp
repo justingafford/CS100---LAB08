@@ -1,6 +1,6 @@
 #ifndef CALCULATOR_CPP
 #define CALCULATOR_CPP
-]#include <iostream>
+#include <iostream>
 #include <vector>
 #include <stdlib.h>
 
