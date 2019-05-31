@@ -21,19 +21,21 @@ class Menu {
 		            return;
 	          }
 	          cout << history.at(history_index)->execute() << endl;
-        }
+        };
+	
         std::string stringify() {
 		  if (history.at(history_index) == NULL) {
 		            return "";
 	          }
 	          return history.at(history_index)->stringify();
-	}
+	};
+	
         bool initialized() {
 	          if (history_index == 0) {
 		            return false;
 	          }
 	          return true;
-        }
+        };
 
         void add_command(Command* cmd) {
 	          vector<Command*>::iterator it = history.begin();
@@ -58,24 +60,24 @@ class Menu {
 			               ++history_index;
 		             }
 	          }
-       }
+       };
 
        Command* get_command() {
 	         return history.at(history_index);
-       }
+       };
 
        void undo() {
 	         if (history_index == 0) {
 		           return;
 		 }
 	         --history_index;
-	}
-
-      void redo() {
+	};
+	
+      	void redo() {
 	        if (history_index == history.size() - 1) {
 		          return;
 	        }
 	        history_index++;
-      }
+      	};
 };
 #endif
