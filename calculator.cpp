@@ -1,4 +1,6 @@
-#include <iostream>
+#ifndef CALCULATOR_CPP
+#define CALCULATOR_CPP
+]#include <iostream>
 #include <vector>
 #include <stdlib.h>
 
@@ -161,4 +163,4 @@ int main() {
     delete menu;
     delete factory;
 };
-
+#endif
