@@ -1,6 +1,8 @@
 #ifndef __COMMAND_HPP__
 #define __COMMAND_HPP__
 #include "base.hpp"
+#include "Op.hpp"
+#include "Rand.hpp"
 #include "Add.hpp"
 #include "Sub.hpp"
 #include "Mult.hpp"
